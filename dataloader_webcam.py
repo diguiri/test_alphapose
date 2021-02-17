@@ -430,7 +430,7 @@ class DataWriter:
                         cv2.waitKey(0)
                         if opt.vis:
                             
-                            ("AlphaPose Demo", img)
+                            cv2_imshow(img)
                             cv2.waitKey(0)
                         if opt.save_img:
                             cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
