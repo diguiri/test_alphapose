@@ -403,7 +403,7 @@ class DataWriter:
                     if opt.save_img or opt.save_video or opt.vis:
                         img = orig_img
                         if opt.vis:
-                            cv2_imshow("AlphaPose Demo", img)
+                            cv2_imshow(img)
                             cv2.waitKey(0)
                         if opt.save_img:
                             cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
@@ -422,11 +422,11 @@ class DataWriter:
                     }
                     self.final_result.append(result)
                     img = vis_frame(orig_img, result)
-                    cv2_imshow("AlphaPose Demo", img)
+                    cv2_imshow(img)
                     cv2.waitKey(0)
                     if opt.save_img or opt.save_video or opt.vis:
                         img = vis_frame(orig_img, result)
-                        cv2_imshow("AlphaPose Demo", img)
+                        cv2_imshow( img)
                         cv2.waitKey(0)
                         if opt.vis:
                             
