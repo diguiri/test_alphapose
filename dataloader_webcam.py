@@ -21,6 +21,7 @@ import torch.multiprocessing as mp
 from multiprocessing import Process
 from multiprocessing import Queue as pQueue
 from threading import Thread
+from google.colab.patches import cv2_imshow
 # import the Queue class from Python 3
 if sys.version_info >= (3, 0):
     from queue import Queue, LifoQueue
@@ -398,12 +399,11 @@ class DataWriter:
                 orig_img = np.array(orig_img, dtype=np.uint8)
                 if boxes is None:
                     img = orig_img
-                    cv2.imshow("AlphaPose Demo", img)
                     cv2.waitKey(0)
                     if opt.save_img or opt.save_video or opt.vis:
                         img = orig_img
                         if opt.vis:
-                            cv2.imshow("AlphaPose Demo", img)
+                            cv2_imshow("AlphaPose Demo", img)
                             cv2.waitKey(0)
                         if opt.save_img:
                             cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
@@ -422,14 +422,15 @@ class DataWriter:
                     }
                     self.final_result.append(result)
                     img = vis_frame(orig_img, result)
-                    cv2.imshow("AlphaPose Demo", img)
+                    cv2_imshow("AlphaPose Demo", img)
                     cv2.waitKey(0)
                     if opt.save_img or opt.save_video or opt.vis:
                         img = vis_frame(orig_img, result)
-                        cv2.imshow("AlphaPose Demo", img)
+                        cv2_imshow("AlphaPose Demo", img)
                         cv2.waitKey(0)
                         if opt.vis:
-                            cv2.imshow("AlphaPose Demo", img)
+                            
+                            ("AlphaPose Demo", img)
                             cv2.waitKey(0)
                         if opt.save_img:
                             cv2.imwrite(os.path.join(opt.outputpath, 'vis', im_name), img)
